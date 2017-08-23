@@ -17,11 +17,11 @@ def make_movie_object(data):
 def main_caller():
     # calling methods to get movies info and save them in movies_file.json file.
     access.download_all_movies_file()
-    api_key = "Put the movie database(TMdb) API KEY here."    # get api key from https://www.themoviedb.org/documentation/api
+    # get api key from https://www.themoviedb.org/documentation/api
+    api_key = "Put the movie database(TMdb) API KEY here."
     conf = access.get_configuration(api_key)
     list = access.get_movies_ids('downloadedMovies.json')
     access.get_movies(api_key, list, conf)
-
 
 
 # Program starts from here. First it downloads a gzip file the extract that file to create downloadedMovies.json file.
@@ -33,7 +33,7 @@ main_caller()    # this creates movies_file.json file
 movies_data = open('movies_file.json', 'r')
 jsonData = json.loads(movies_data.read())
 list_of_movies = make_movie_object(jsonData)
-print list_of_movies[0].title
+print "Everything worked. Website opened. Click on any movie to play its trailer."
 
-# this creates movies webpage
+# this creates movies web page
 fresh_tomatoes.open_movies_page(list_of_movies)
